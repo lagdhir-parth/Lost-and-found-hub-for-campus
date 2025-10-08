@@ -114,12 +114,12 @@ router.post(
 );
 
 router.get("/lostItems", async function (req, res) {
-  const items = await itemModel.find({ type: "lost" });
+  const items = await itemModel.find({ type: "lost" }).populate('postedBy');
   res.status(200).json(items);
 });
 
 router.get("/foundItems", async function (req, res) {
-  const items = await itemModel.find({ type: "found" });
+  const items = await itemModel.find({ type: "found" }).populate('postedBy');
   res.status(200).json(items);
 });
 

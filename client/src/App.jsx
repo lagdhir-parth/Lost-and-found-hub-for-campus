@@ -23,13 +23,17 @@ const App = () => {
           <Route path="/about" element={<About />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/register" element={<Register />}></Route>
-          <Route path="/createItem" element={<CreateItem/>}></Route>
+          {/* <Route path="/createItem" element={<CreateItem/>}></Route> */}
           {/* <Route path="/profile" element={<Profile />}></Route> */}
 
           {/* 🔐 PROTECTED ROUTE 🔐 */}
           <Route
             path="/profile"
             element={<ProtectedRoute element={<Profile />}/>}
+          ></Route>
+          <Route
+            path="/createItem"
+            element={<ProtectedRoute element={<CreateItem />}/>}
           ></Route>
         </Routes>
       </div>

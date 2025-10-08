@@ -62,12 +62,16 @@ const Navbar = () => {
         </div>
         <div className="nav-right">
           {auth.isLoggedIn ? (
-            <Link to="/profile">
+            <Link to="/profile" style={{textDecoration:'none'}}>
               <div className="profile-logo-container">
                 <i
                   className="fa-solid fa-user fa-2xl profile-logo"
                   style={{ color: "#FFD43B" }}
                 ></i>
+                <div className="profile-details">
+                  <p>{auth.user.name}</p>
+                  <p style={{color: '#ffd53b87', fontSize:'14px'}}>{auth.user.username}</p>
+                </div>
               </div>
             </Link>
           ) : (
