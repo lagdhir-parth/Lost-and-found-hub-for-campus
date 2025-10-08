@@ -1,0 +1,98 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.main-content {
+  height: 100%;
+  width: 100%;
+  flex-grow: 1;
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.register-container {
+  height: 90%;
+  width: 40%;
+  background-color: #2a2b0126;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 20px;
+  border: 5px solid #cbd31726;
+  border-radius: 40px;
+}
+
+.heading {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 45px;
+  font-weight: 900;
+  color: #eead2b;
+}
+
+.msg{
+    text-align: center;
+    font-size: 20px;
+}
+
+.register-form {
+  height: 500px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  font-size: 30px;
+}
+
+.form-row {
+  display: flex;
+  /* Pushes content to the edges: label at flex-start, input at flex-end */
+  justify-content: space-between;
+  /* Ensure the row spans the full width of the form */
+  width: 90%;
+  padding: 0 20px; /* Add some horizontal padding */
+}
+
+.register-form input {
+  height: 35px;
+  width: 230px;
+  border: 1px solid black;
+  font-size: 20px;
+  border-radius: 10px;
+  padding-left: 10px;
+  margin-left: 20px;
+  align-self: flex-end;
+  color:black;
+  border:none
+}
+
+.btns {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 40px;
+  width: 100%;
+}
+.btns button {
+  height: 50px;
+  width: 140px;
+  background-color: #eead2b;
+  color: #40260b;
+  font-weight: 600;
+  font-size: 20px;
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+}
+.btns > button:first-child{
+    background-color: transparent;
+    color:#eead2b;
+    border:2px solid #eead2b;
+}
+
+.loginPage-msg{
+    text-align: center;
+}

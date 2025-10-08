@@ -1,0 +1,32 @@
+/* Parent that wraps the scrollable area */
+.lost-item-main-content {
+  flex: 1;                  /* take remaining space beside sidebar */
+  height: calc(100vh - 70px); /* adjust height minus navbar (if ContentBar is fixed) */
+  overflow-y: auto;         /* enables vertical scroll */
+  padding: 20px;
+  padding-bottom: 90px;
+}
+
+/* The container that holds cards */
+.item-list-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 20px;
+  width: 100%;
+}
+
+/* Optional: custom scrollbar style (looks modern) */
+.lost-item-main-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.lost-item-main-content::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 4px;
+}
+
+.lost-item-main-content::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}

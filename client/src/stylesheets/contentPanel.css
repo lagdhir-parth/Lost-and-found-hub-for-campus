@@ -1,0 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.contentPanel-main {
+  height: 79.4vh;
+  width: 20%;
+  background-color: #2a2b0126;
+  border: 1px solid #eead2bbf;
+  border-top: none;
+}

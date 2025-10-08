@@ -1,0 +1,176 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.foundPage-main-content {
+  height: 100%;
+  width: 100%;
+  flex-grow: 1;
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.itemForm-container {
+  height: 80%;
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #2a2b0126;
+  border: 5px solid #cbd31726;
+  border-radius: 40px;
+}
+
+.create-item-form {
+  height: 90%;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.create-item-form-row {
+  display: flex;
+  /* Pushes content to the edges: label at flex-start, input at flex-end */
+  justify-content: space-between;
+  /* Ensure the row spans the full width of the form */
+  width: 90%;
+  padding: 0 20px;
+}
+
+.text-fields {
+  height: 80%;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-right: 2px solid rgba(128, 128, 128, 0.582);
+  font-size: 30px;
+}
+
+.text-fields input[type="text"] {
+  height: 35px;
+  width: 230px;
+  border: 1px solid black;
+  font-size: 20px;
+  border-radius: 10px;
+  padding-left: 10px;
+  margin-left: 20px;
+  color: black;
+  border: none;
+}
+
+.type-div {
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.text-fields input[type="radio"] {
+  height: 20px;
+  width: 20px;
+  margin-left: 20px;
+}
+
+.text-fields label[for="lost"],
+.text-fields label[for="found"] {
+  font-size: 25px;
+}
+
+textarea[name="description"] {
+  font-size: 20px;
+  border-radius: 10px;
+  padding: 5px 0 0 10px;
+  color: black;
+}
+
+.createItem-btns {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 40px;
+  width: 100%;
+}
+.createItem-btns button {
+  height: 50px;
+  width: 140px;
+  background-color: #eead2b;
+  color: #40260b;
+  font-weight: 600;
+  font-size: 20px;
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+}
+.createItem-btns > button:first-child {
+  background-color: transparent;
+  color: #eead2b;
+  border: 2px solid #eead2b;
+}
+
+.image-upload {
+  height: 88%;
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 20px;
+  gap: 20px;
+}
+
+.upload-file {
+  border-radius: 40px;
+  height: 250px;
+  width: 250px;
+  background-color: #ff00000a;
+  border: 2px dashed red;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+  color: grey;
+  padding: 20px;
+  text-align: center;
+  border-radius: 40px;
+  overflow: hidden;
+}
+
+.category-div {
+  height: 134px;
+  width: 100%;
+  /* background-color: red; */
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center; */
+  gap: 20px;
+}
+
+.category-checkbox-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* align-items: center; */
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.checkbox-span {
+  display: flex;
+  align-items: center;
+}
+
+.category-checkbox {
+  height: 20px;
+  width: 20px;
+  margin-right: 7px;
+  /* margin-left: 5px; */
+}
