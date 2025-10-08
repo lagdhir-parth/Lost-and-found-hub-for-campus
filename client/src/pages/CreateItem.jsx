@@ -107,7 +107,7 @@ const CreateItem = () => {
   return (
     <div className="foundPage-main-content">
       <div className="itemForm-container">
-        <form className="create-item-form" onSubmit={handleTextChange}>
+        <form className="create-item-form" onSubmit={handleSubmit}>
           <div className="text-fields">
             <div className="create-item-form-row">
               <label htmlFor="itemName">Item Name:</label>
