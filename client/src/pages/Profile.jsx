@@ -3,11 +3,12 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
 import { useContext } from "react";
 import "../stylesheets/profile.css";
+import userPlaceholderImg from "../assets/user_placeholder.png";
 
 const Profile = () => {
   const API = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
-  const { setAuth } = useContext(AuthContext);
+  const { auth, setAuth } = useContext(AuthContext);
 
   const handleLogout = async () => {
     try {
@@ -24,17 +25,21 @@ const Profile = () => {
   };
 
   return (
-    <div style={{ fontSize: "30px" }}>
-      This is profile page
-      <i className="fa-solid fa-user" style={{ color: "#FFD43B" }}></i>
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <button className="profile-logout-btn" onClick={handleLogout}>
-        Logout
-      </button>
+    <div className="profile-main-content">
+      <div className="user-profile">
+        <div className="details">
+          <p style={{fontSize: '40px', color: '#eead2b', fontWeight:'900'}}>{auth.user.name}</p>
+          <p><span>Username: </span>{auth.user.username}</p>
+          <p><span>Email: </span>{auth.user.email}</p>
+          {auth.user.m_no ? <p><span>Mobile no.: </span>{auth.user.m_no}</p> : ""}
+          <button className="profile-logout-btn" onClick={handleLogout}>
+            Logout
+          </button>
+        </div>
+        <div className="avatar">
+          <img src={userPlaceholderImg} />
+        </div>
+      </div>
     </div>
   );
 };
