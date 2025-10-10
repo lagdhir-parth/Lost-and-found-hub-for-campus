@@ -57,7 +57,7 @@ router.post(
     if (!req.user || !req.user._id) {
       return res.status(401).json({ message: "User not authenticated" });
     }
-      
+
     const { itemName, location, category, description, type } = req.body;
     // req.file contains details about the uploaded file
     const imagePath = req.file ? req.file.path : null;
@@ -114,12 +114,33 @@ router.post(
 );
 
 router.get("/lostItems", async function (req, res) {
-  const items = await itemModel.find({ type: "lost" }).populate('postedBy');
+  const items = await itemModel.find({ type: "lost" }).populate("postedBy");
   res.status(200).json(items);
 });
 
 router.get("/foundItems", async function (req, res) {
-  const items = await itemModel.find({ type: "found" }).populate('postedBy');
+  const items = await itemModel.find({ type: "found" }).populate("postedBy");
+  res.status(200).json(items);  
+});
+
+router.get("/userItems", async function (req, res) {
+  const items = await itemModel
+    .find({ postedBy: req.user._id })
+    .populate("postedBy");
+  res.status(200).json(items);
+});
+
+router.get("/userLostItems", async function (req, res) {
+  const items = await itemModel
+    .find({ postedBy: req.user._id, type:'lost' })
+    .populate("postedBy");
+  res.status(200).json(items);
+});
+
+router.get("/userFoundItems", async function (req, res) {
+  const items = await itemModel
+    .find({ postedBy: req.user._id, type:'found' })
+    .populate("postedBy");
   res.status(200).json(items);
 });
 

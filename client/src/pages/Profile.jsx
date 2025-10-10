@@ -1,9 +1,12 @@
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Outlet, Route, Routes, useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
 import { useContext } from "react";
 import "../stylesheets/profile.css";
 import userPlaceholderImg from "../assets/user_placeholder.png";
+import ProfileNav from "../Components/ProfileNav";
+import UserItems from "./userItemPages/userItems";
+import UserFoundItem from "./userItemPages/UserFoundItem";
 
 const Profile = () => {
   const API = import.meta.env.VITE_API_URL;
@@ -40,6 +43,9 @@ const Profile = () => {
           <img src={userPlaceholderImg} />
         </div>
       </div>
+        <ProfileNav/>
+
+      <Outlet/>
     </div>
   );
 };

@@ -236,7 +236,7 @@ const CreateItem = () => {
                   "Keys",
                   "Wallet",
                   "Electronics",
-                  "Apparel",
+                  "Accessories",
                   "ID Card",
                   "Bag",
                   "Bottle",

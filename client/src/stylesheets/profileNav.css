@@ -1,0 +1,30 @@
+.profile-nav-main{
+    width: 80%;
+    margin-top: 60px;
+    font-size: 25px;
+    border-bottom: 1px solid gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.profile-nav-main ul{
+    display: flex;
+    justify-content: space-between;
+    width: 600px;
+}
+
+.profile-nav-main ul li{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    /* padding: 0 20px; */
+    /* border: 3px solid transparent; */
+}
+
+.active-bg{
+    background-color: gray;
+}

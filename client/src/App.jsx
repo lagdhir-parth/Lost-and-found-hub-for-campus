@@ -10,6 +10,10 @@ import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import ProtectedRoute from "./Components/ProtectedRoute";
 import FoundItemPage from "./pages/FoundItemPage";
+import UserLostItems from "./pages/userItemPages/UserLostItems";
+import UserFoundItem from "./pages/userItemPages/UserFoundItem";
+import UserItems from "./pages/userItemPages/userItems";
+
 
 const App = () => {
   return (
@@ -29,11 +33,15 @@ const App = () => {
           {/* 🔐 PROTECTED ROUTE 🔐 */}
           <Route
             path="/profile"
-            element={<ProtectedRoute element={<Profile />}/>}
-          ></Route>
+            element={<ProtectedRoute element={<Profile />} />}
+          >
+            <Route path="userItems" element={<UserItems />} /> {/* Default "All" */}
+            <Route path="userLostItems" element={<UserLostItems />} />{" "}
+            <Route path="userFoundItems" element={<UserFoundItem />} />
+          </Route>
           <Route
             path="/createItem"
-            element={<ProtectedRoute element={<CreateItem />}/>}
+            element={<ProtectedRoute element={<CreateItem />} />}
           ></Route>
         </Routes>
       </div>

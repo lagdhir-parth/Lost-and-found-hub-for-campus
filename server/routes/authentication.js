@@ -93,7 +93,7 @@ router.get("/logout", function (req, res, next) {
 });
 
 router.get("/profile", isLoggedIn, function (req, res) {
-  console.log(req.user)
+  // console.log(req.user)
   res.status(200).json({ message: "User Authenticated" });
 });
 
