@@ -1,11 +1,10 @@
 import axios from "axios";
 import { Outlet, Route, Routes, useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import "../stylesheets/profile.css";
 import userPlaceholderImg from "../assets/user_placeholder.png";
 import ProfileNav from "../Components/ProfileNav";
-import { useState } from "react";
 
 const dummyNotifications = [
   { id: 1, message: "Your Lost Item 'Keys' was found!", time: "2m ago" },
@@ -20,6 +19,22 @@ const Profile = () => {
   const API = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
   const { auth, setAuth } = useContext(AuthContext);
+  const [notifications, setNotifications] = useState([]);
+
+  useEffect(() => {
+    const fetchNotifications = async () => {
+      try {
+        const res = await axios.get(`${API}/notification/my`, {
+          withCredentials: true,
+        });
+        // Make sure to access res.data.notifications, not res directly
+        setNotifications(res.data.notifications || []);
+      } catch (err) {
+        console.error("Failed to fetch notifications:", err);
+      }
+    };
+    fetchNotifications();
+  }, [API]);
 
   const handleLogout = async () => {
     try {
@@ -42,7 +57,23 @@ const Profile = () => {
     setIsPanelOpen((prev) => !prev);
   };
 
-  const notificationCount = dummyNotifications.length;
+  const handleNotificationClick = async (id) => {
+    try {
+      // Optional: mark as read in backend
+      await axios.patch(
+        `${API}/notification/${id}/read`,
+        {},
+        { withCredentials: true }
+      );
+
+      // Remove it immediately from the frontend state
+      setNotifications((prev) => prev.filter((notif) => notif._id !== id));
+    } catch (err) {
+      console.error("Failed to mark notification as read:", err);
+    }
+  };
+
+  const notificationCount = notifications.length;
 
   return (
     <div className="profile-main-content">
@@ -88,10 +119,16 @@ const Profile = () => {
                   <p className="no-notifications">No new notifications.</p>
                 ) : (
                   <ul className="notification-list">
-                    {dummyNotifications.map((notif) => (
-                      <li key={notif.id} className="notification-item">
+                    {notifications.map((notif) => (
+                      <li
+                        key={notif._id}
+                        onClick={() => handleNotificationClick(notif._id)}
+                        className="notification-item"
+                      >
                         <p>{notif.message}</p>
-                        <span className="notification-time">{notif.time}</span>
+                        <span className="notification-time">
+                          {notif.createdAt}
+                        </span>
                       </li>
                     ))}
                   </ul>

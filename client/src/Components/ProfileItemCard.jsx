@@ -9,8 +9,6 @@ const ProfileItemCard = ({ item }) => {
   // Define a style for the badge based on the item type
   const typeBadgeClass = item.type === "lost" ? "lost-badge" : "found-badge";
 
-  const { auth } = useContext(AuthContext);
-
   return (
     <div className="item-card">
       <div className={`item-type-badge ${typeBadgeClass}`}>
@@ -42,22 +40,24 @@ const ProfileItemCard = ({ item }) => {
           <span className="item-category-label">Category:</span>
           <span className="item-category-value">{item.category}</span>
         </div>
-        {/* <div
-          className="user-details"
+
+        <div
+          className="isReturned-div"
           style={{
-            marginTop: "10px",
-            borderTop: "1px solid gray",
-            padding: "7px 0",
+            width: "100%",
+            height: "60px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
-          <strong>Contact for item:</strong>
-          <p>Name: {item.postedBy.name}</p>
-          {item.postedBy.m_no ? <p>Mobile no.: {item.postedBy.m_no}</p> : ""}
-          <p>Email: {item.postedBy.email}</p>
-        </div> */}
+          {item.isReturned ? (
+            <h3 style={{ color: "green" }}>Returned</h3>
+          ) : (
+            <h3 style={{ color: "red" }}>Not Returned</h3>
+          )}
+        </div>
       </div>
-
-      <button className="view-details-btn">Ask for Claim</button>
     </div>
   );
 };

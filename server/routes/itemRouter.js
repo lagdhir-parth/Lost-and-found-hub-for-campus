@@ -120,7 +120,7 @@ router.get("/lostItems", async function (req, res) {
 
 router.get("/foundItems", async function (req, res) {
   const items = await itemModel.find({ type: "found" }).populate("postedBy");
-  res.status(200).json(items);  
+  res.status(200).json(items);
 });
 
 router.get("/userItems", async function (req, res) {
@@ -132,14 +132,14 @@ router.get("/userItems", async function (req, res) {
 
 router.get("/userLostItems", async function (req, res) {
   const items = await itemModel
-    .find({ postedBy: req.user._id, type:'lost' })
+    .find({ postedBy: req.user._id, type: "lost" })
     .populate("postedBy");
   res.status(200).json(items);
 });
 
 router.get("/userFoundItems", async function (req, res) {
   const items = await itemModel
-    .find({ postedBy: req.user._id, type:'found' })
+    .find({ postedBy: req.user._id, type: "found" })
     .populate("postedBy");
   res.status(200).json(items);
 });

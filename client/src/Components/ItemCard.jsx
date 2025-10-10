@@ -1,6 +1,8 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import "../stylesheets/ItemCard.css";
 import { AuthContext } from "../contexts/AuthContext";
+import axios from "axios";
+import { useEffect } from "react";
 
 const ItemCard = ({ item }) => {
   const API = import.meta.env.VITE_API_URL;
@@ -11,9 +13,45 @@ const ItemCard = ({ item }) => {
 
   const { auth } = useContext(AuthContext);
 
-  const handleClick=()=>{
-    console.log(item)
-  }
+  const [isClicked, setIsClicked] = useState(false);
+
+  const [isCurrentUserPoster, setIsCurrentUserPoster] = useState(
+    auth.user && item.postedBy && auth.user._id === item.postedBy._id
+  );
+
+  useEffect(() => {
+    setIsCurrentUserPoster(
+      auth.user && item.postedBy && auth.user._id === item.postedBy._id
+    );
+  });
+
+  const handleClick = async () => {
+    if (!auth.isLoggedIn) {
+      alert("You must be logged in to claim an item!");
+      return;
+    }
+    setIsClicked(true);
+
+    try {
+      const response = await axios.post(
+        `${API}/notification/ask-claim`,
+        {
+          itemId: item._id,
+          ownerId: item.postedBy._id,
+        },
+        { withCredentials: true } // include cookies for session
+      );
+
+      if (response.data.success) {
+        alert("Claim request sent to the item owner!");
+      } else {
+        setIsClicked(false);
+      }
+    } catch (error) {
+      console.error("Error sending claim request:", error);
+      alert("Failed to send claim request");
+    }
+  };
 
   return (
     <div className="item-card">
@@ -61,7 +99,21 @@ const ItemCard = ({ item }) => {
         </div>
       </div>
 
-      <button className="view-details-btn" onClick={handleClick}>Ask for Claim</button>
+      <button
+        className={`view-details-btn ${
+          isClicked || isCurrentUserPoster ? "claim-sent" : ""
+        }`} // 👈 Add conditional class
+        onClick={handleClick}
+        disabled={isClicked || isCurrentUserPoster} // Simplified boolean prop usage
+      >
+        <p>
+          {isCurrentUserPoster
+            ? "You posted this item"
+            : isClicked
+            ? "Asked for claim"
+            : "Ask for claim"}
+        </p>
+      </button>
     </div>
   );
 };

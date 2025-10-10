@@ -8,7 +8,8 @@ const userModel = require("./models/user");
 var cors = require("cors");
 
 const userRouter = require("./routes/authentication");
-const itemRouter = require("./routes/itemRouter")
+const itemRouter = require("./routes/itemRouter");
+const notificationRouter = require('./routes/notificationRouter');
 
 connectDB();
 
@@ -35,6 +36,7 @@ passport.deserializeUser(userModel.deserializeUser());
 
 app.use("/auth", userRouter); // For any request that starts with "/auth", use the userRouter to handle it. (eg. http://localhost:3000/auth/register)
 app.use('/item', itemRouter)
+app.use('/notification', notificationRouter);
 
 app.listen(3000, () => {
   console.log("Server runs on port: 3000");

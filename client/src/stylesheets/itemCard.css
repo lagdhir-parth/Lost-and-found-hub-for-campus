@@ -60,6 +60,9 @@
 .item-details {
   padding: 15px;
   flex-grow: 1; /* details to fill vertical space */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .item-name {
@@ -137,4 +140,19 @@
 
 .view-details-btn:hover {
   background-color: #2980b9;
+}
+
+.claim-sent {
+  /* 🚨 New styles for the button after it's been clicked 🚨 */
+  background-color: #6b6b6b !important; /* Gray background */
+  color: #40260b; /* Text color */
+  cursor: default !important; /* Change cursor to indicate it's disabled */
+  opacity: 0.8;
+  transition: background-color 0.2s;
+}
+
+/* Ensure hover doesn't change color after it's been sent */
+.view-details-btn:hover:disabled,
+.claim-sent:hover {
+  background-color: #535252 !important;
 }

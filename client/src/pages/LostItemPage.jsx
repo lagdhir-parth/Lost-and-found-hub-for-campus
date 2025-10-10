@@ -13,7 +13,7 @@ const LostItemPage = () => {
     // ✅ fetch data once when component mounts
     const fetchItems = async () => {
       try {
-        const response = await axios.get(`${API}/item/lostItems`);
+        const response = await axios.get(`${API}/item/lostItems`, {withCredentials: true});
         setItems(response.data); // ✅ store array in state
       } catch (error) {
         console.error("Error fetching lost items:", error);
