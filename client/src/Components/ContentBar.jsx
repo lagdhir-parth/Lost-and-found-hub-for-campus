@@ -18,10 +18,10 @@ const ContentBar = () => {
         </div>
         <div className="bar-right">
           <div className="list-div">
-            <i class="fa-solid fa-list fa-xl"></i>
+            <i className="fa-solid fa-list fa-xl"></i>
           </div>
           <div className="grid-div">
-            <i class="fa-solid fa-grip fa-xl"></i>
+            <i className="fa-solid fa-grip fa-xl"></i>
           </div>
         </div>
       </div>

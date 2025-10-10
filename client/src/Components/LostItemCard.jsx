@@ -2,7 +2,7 @@ import { useContext } from "react";
 import "../stylesheets/ItemCard.css";
 import { AuthContext } from "../contexts/AuthContext";
 
-const ItemCard = ({ item }) => {
+const LostItemCard = ({ item }) => {
   const API = import.meta.env.VITE_API_URL;
   const imageUrl = item.img ? `${API}${item.img}` : "/placeholder.jpg";
 
@@ -10,10 +10,6 @@ const ItemCard = ({ item }) => {
   const typeBadgeClass = item.type === "lost" ? "lost-badge" : "found-badge";
 
   const { auth } = useContext(AuthContext);
-
-  const handleClick=()=>{
-    console.log(item)
-  }
 
   return (
     <div className="item-card">
@@ -60,10 +56,8 @@ const ItemCard = ({ item }) => {
           <p>Email: {item.postedBy.email}</p>
         </div>
       </div>
-
-      <button className="view-details-btn" onClick={handleClick}>Ask for Claim</button>
     </div>
   );
 };
 
-export default ItemCard;
+export default LostItemCard;

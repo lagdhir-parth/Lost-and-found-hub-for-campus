@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import ContentBar from "../Components/ContentBar";
 import ContentSidePanel from "../Components/ContentSidePanel";
-import ItemCard from "../Components/ItemCard";
+import LostItemCard from "../Components/LostItemCard";
 import axios from "axios";
 import "../stylesheets/lostItem.css";
 
@@ -31,7 +31,7 @@ const LostItemPage = () => {
         <div className="lost-item-main-content">
           <div className="item-list-container">
             {items.map((item) => (
-              <ItemCard key={item._id} item={item} />
+              <LostItemCard key={item._id} item={item} />
             ))}
           </div>
         </div>
