@@ -10,8 +10,8 @@ const LandingPage = () => {
   return (
     <div>
       <div className="main-container">
-        <img className="character" src={landingImg} />
-        <div className="content">
+        <img className="character animate-character-float" src={landingImg} />
+        <div className="content animate-stagger">
           <p>Welcome, to our website.</p>
           <p>THE PROBLEM SOLVED...</p>
           <p>
@@ -26,7 +26,7 @@ const LandingPage = () => {
             </Link>
           </center>
         </div>
-        {auth.isLoggedIn ? <></> : <img className="clickMe" src={clickMeImg} />}
+        {auth.isLoggedIn ? <></> : <img className="clickMe animate-click-me" src={clickMeImg} />}
       </div>
     </div>
   );

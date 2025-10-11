@@ -61,8 +61,12 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="nav-right">
-          {auth.isLoggedIn ? (
-            <Link to="/profile" style={{textDecoration:'none'}}>
+          {!auth.isLoggedIn ? (
+            <Link to="/login">
+              <button className="login-btn">Login</button>
+            </Link>
+          ) : auth.user.username === "admin" ? (
+            <Link to="/admin" style={{ textDecoration: "none" }}>
               <div className="profile-logo-container">
                 <i
                   className="fa-solid fa-user fa-2xl profile-logo"
@@ -70,13 +74,26 @@ const Navbar = () => {
                 ></i>
                 <div className="profile-details">
                   <p>{auth.user.name}</p>
-                  <p style={{color: '#ffd53b87', fontSize:'14px'}}>{auth.user.username}</p>
+                  <p style={{ color: "#ffd53b87", fontSize: "14px" }}>
+                    {auth.user.username}
+                  </p>
                 </div>
               </div>
             </Link>
           ) : (
-            <Link to="/login">
-              <button className="login-btn">Login</button>
+            <Link to="/profile" style={{ textDecoration: "none" }}>
+              <div className="profile-logo-container">
+                <i
+                  className="fa-solid fa-user fa-2xl profile-logo"
+                  style={{ color: "#FFD43B" }}
+                ></i>
+                <div className="profile-details">
+                  <p>{auth.user.name}</p>
+                  <p style={{ color: "#ffd53b87", fontSize: "14px" }}>
+                    {auth.user.username}
+                  </p>
+                </div>
+              </div>
             </Link>
           )}
         </div>

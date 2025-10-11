@@ -144,4 +144,18 @@ router.get("/userFoundItems", async function (req, res) {
   res.status(200).json(items);
 });
 
+router.get("/adminAllItems", async function (req, res) {
+  // 🚨 FIX 1: The function MUST be 'async' to use 'await' 🚨
+  try {
+    // Find all documents in the itemModel (the empty object {} matches everything)
+    const items = await itemModel.find({});
+
+    // 🚨 FIX 2: Send the response back to the client 🚨
+    res.status(200).json(items);
+  } catch (error) {
+    console.error("Error fetching all items for admin:", error);
+    res.status(500).json({ message: "Failed to fetch all items." });
+  }
+});
+
 module.exports = router;

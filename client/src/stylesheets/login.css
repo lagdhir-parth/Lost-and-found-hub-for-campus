@@ -22,6 +22,10 @@
   padding: 10px 20px;
   border: 5px solid #cbd31726;
   border-radius: 40px;
+
+  opacity: 0;
+  transform: translateY(50px);
+  animation: slideInUp 0.5s ease-out   forwards ;
 }
 
 .login-heading {
@@ -69,6 +73,12 @@
   margin-left: 20px;
   color: black;
   border: none;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.login-form input{
+  transform: scale(1.02);
+  border-color: #eead2b;
+  outline: none;
 }
 
 .login-btns {
@@ -99,4 +109,11 @@
   text-align: center;
   margin-bottom: 20px;
   font-size: 20px;
+}
+
+@keyframes slideInUp{
+  to{
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

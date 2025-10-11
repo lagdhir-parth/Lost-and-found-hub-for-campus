@@ -2,7 +2,7 @@
 .lost-item-main-content {
   flex: 1;                  /* take remaining space beside sidebar */
   height: calc(100vh - 70px); /* adjust height minus navbar (if ContentBar is fixed) */
-  overflow-y: auto;         /* enables vertical scroll */
+  overflow-y: auto; 
   padding: 20px;
   padding-bottom: 90px;
 }

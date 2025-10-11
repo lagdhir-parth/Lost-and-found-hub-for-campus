@@ -30,6 +30,19 @@ function Login() {
     setLoading(true);
     setError("");
 
+    if (formData.username === "admin" && formData.password === "1234") {
+      // Assume you need to set the Auth context for the admin user too
+      setAuth({
+        isLoggedIn: true,
+        user: { username: "admin", name: "Admin", _id: "admin-id" }, // Mock admin user object
+        loading: false,
+      });
+
+      navigate("/admin");
+      setLoading(false); // Stop loading state
+      return; // 🛑 CRITICAL: Exit the function to skip the API call
+    }
+
     try {
       const res = await axios.post(`${API}/auth/login`, formData, {
         withCredentials: true,
