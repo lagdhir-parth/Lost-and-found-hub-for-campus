@@ -9,7 +9,7 @@ nav {
   height: 13vh;
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   /* background: rgba(255, 255, 255, 0.2); 
   backdrop-filter: blur(10px); */

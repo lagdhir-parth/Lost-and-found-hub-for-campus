@@ -1,7 +1,7 @@
-src/stylesheets/admin.css
-.admin-navbar {
+src/stylesheets/admin.css .admin-navbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  gap: 126px;
   align-items: center;
   background-color: #222;
   color: white;
@@ -71,6 +71,7 @@ src/stylesheets/admin.css
   cursor: pointer;
   transition: background-color 0.2s, color 0.2s;
   margin-top: 20px; /* Add some space below the details */
+  font-size: 20px;
 
   /* 🚨 Red Background Styling 🚨 */
   background-color: #e74c3c; /* A deep, standard red */
@@ -81,7 +82,7 @@ src/stylesheets/admin.css
   background-color: #c0392b; /* Slightly darker red on hover for feedback */
 }
 
-.admin-item-container{
+.admin-item-container {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
@@ -92,33 +93,60 @@ src/stylesheets/admin.css
 /* Stylesheet where .admin-main-container is defined */
 
 .admin-main-container {
-    /* 1. Ensure the container takes up space */
-    width: 100%;
-    
-    /* 2. Set the maximum height. 
+  /* 1. Ensure the container takes up space */
+  width: 100%;
+
+  /* 2. Set the maximum height. 
        Use 'vh' (viewport height) or '100%' minus the height of fixed elements 
        (like the Admin Navbar/Header, if any) */
-    max-height: 100vh; 
-    
-    /* If you have a fixed AdminNavbar at the top, adjust the max-height: */
-    /* max-height: calc(100vh - 60px); */ 
-    
-    /* 3. Enable vertical scrolling */
-    /* 'auto' shows the scrollbar only when content exceeds max-height */
-    overflow-y: auto; 
-    
-    /* Optional: Ensure content wraps correctly */
-    padding: 20px;
-    padding-bottom: 100px; 
-    box-sizing: border-box; /* Ensures padding doesn't push width/height beyond limit */
+  max-height: 100vh;
+
+  /* If you have a fixed AdminNavbar at the top, adjust the max-height: */
+  /* max-height: calc(100vh - 60px); */
+
+  /* 3. Enable vertical scrolling */
+  /* 'auto' shows the scrollbar only when content exceeds max-height */
+  overflow-y: auto;
+
+  /* Optional: Ensure content wraps correctly */
+  padding: 20px;
+  padding-bottom: 100px;
+  box-sizing: border-box; /* Ensures padding doesn't push width/height beyond limit */
 }
 
 /* Optional: Style the scrollbar for better appearance (requires vendor prefixes for cross-browser support) */
 .admin-main-container::-webkit-scrollbar {
-    width: 8px;
+  width: 8px;
 }
 
 .admin-main-container::-webkit-scrollbar-thumb {
-    background-color: #ccc;
-    border-radius: 4px;
+  background-color: #ccc;
+  border-radius: 4px;
+}
+
+.user-list {
+  display: flex;
+  justify-content: space-evenly;
+  /* align-items: center; */
+  flex-wrap: wrap;
+  overflow-y: auto;
+}
+.admin-user-div {
+  width: 390px; /* Standard card width */
+  min-height: 330px;
+  border: 3px solid #eead2b;
+  background-color: #4a520240;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: 23px;
+}
+
+.admin-users-list-container{
+  overflow-y: auto;
 }

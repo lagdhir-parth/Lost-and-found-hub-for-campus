@@ -1,0 +1,154 @@
+/* about.css */
+.pagal {
+  overflow-y: auto;
+}
+
+.about-container {
+  width: 80%;
+  height: 148%;
+  margin: 51px auto;
+  padding-bottom: 10px;
+  margin-top: 40px;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: "Poppins", "Segoe UI", sans-serif;
+  color: #eeae2d;
+  border: 2px solid #eeae2d;
+}
+
+/* Main heading */
+.about {
+  text-align: center;
+  color: #eeae2d;
+  font-size: 3.5rem;
+  margin-bottom: -25px;
+  margin-top: 14px;
+}
+
+/* Section headings */
+.about-misson {
+  color: #eeae2d;
+  margin-top: 40px;
+  margin-bottom: 13px;
+  font-size: 1.9rem;
+  border-left: 7px solid #cfd8e2;
+  padding-left: 13px;
+}
+
+.about-cont {
+  color: #eeae2d;
+  font-size: 1.9rem;
+  border-left: 7px solid #cfd8e2;
+  padding-left: 13px;
+  margin-top: -8px;
+  margin-bottom: 13px;
+}
+/* Paragraph styling */
+.para {
+  color: white;
+  line-height: 1.2;
+  margin-bottom: -56px;
+  font-size: 1.4rem;
+}
+
+.para1 {
+  color: white;
+  font-size: 1.4rem;
+  justify-content: center;
+  align-items: center;
+  margin-top: 60px;
+}
+
+/* List styling */
+.ultra {
+  list-style-type: disc;
+  margin: 10px 0 10px 25px;
+}
+
+.about-img .about-ul {
+  list-style: disc;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 1.2rem;
+  margin-left: 50px;
+}
+
+.about-img {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.about-img img {
+  margin-top: 92px;
+  height: 45%;
+  width: 32%;
+}
+
+.lim {
+  margin-bottom: 8px;
+  color: whitesmoke;
+}
+/* --- Animation for the About Us Image --- */
+
+/* 1. Initial Entry: Fade in and subtle scale up */
+/* --- Animation for the About Us Image: Diagonal Wipe-In Reveal --- */
+
+/* 1. Define the Reveal Animation using clip-path */
+@keyframes imageReveal {
+  0% {
+    opacity: 0;
+    /* Start with a small diagonal clip-path, effectively hidden */
+    clip-path: polygon(0% 100%, 0% 100%, 0% 100%, 0% 100%);
+  }
+  20% {
+    opacity: 0.2; /* Start fading in slightly */
+  }
+  100% {
+    opacity: 1;
+    /* End with a full clip-path, fully visible */
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+}
+
+/* 2. Apply the animation to the image */
+.animate-about-image {
+  /* Set initial state for the animation */
+  opacity: 0;
+  /* Ensure no overflow if image is initially clipped */
+  overflow: hidden;
+
+  /* Apply the reveal animation */
+  animation: imageReveal 2s cubic-bezier(0.25, 0.1, 0.25, 1) 1s forwards; /* 2s duration, smooth easing, 1s delay */
+
+  /* Optional: Add a slight hover effect to make it interactive */
+  transition: transform 0.3s ease-in-out;
+  margin-right: 180px;
+}
+
+/* Optional: Slight lift on hover */
+.animate-about-image:hover {
+  transform: scale(1.02);
+}
+
+/* --- (Keep your existing content animation below this) --- */
+
+/* Keyframes for the main content fade-in */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Apply the animation to the content container */
+.fade-in-content {
+  opacity: 0;
+  animation: fadeIn 1.5s ease-out 0.2s forwards;
+}

@@ -158,4 +158,29 @@ router.get("/adminAllItems", async function (req, res) {
   }
 });
 
+router.delete("/deleteItem/:itemId", async (req, res) => {
+  try {
+    const { itemId } = req.params;
+
+    // You should add authentication/authorization check here (e.g., ensure user is 'admin')
+
+    const deletedItem = await itemModel.findByIdAndDelete(itemId);
+
+    if (!deletedItem) {
+      return res
+        .status(404)
+        .json({ success: false, message: "Item not found." });
+    }
+
+    res
+      .status(200)
+      .json({ success: true, message: "Item deleted successfully." });
+  } catch (error) {
+    console.error("Error deleting item:", error);
+    res
+      .status(500)
+      .json({ success: false, message: "Server error during deletion." });
+  }
+});
+
 module.exports = router;

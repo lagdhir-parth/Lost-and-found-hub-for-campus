@@ -1,12 +1,23 @@
 import "../stylesheets/ItemCard.css";
 import axios from "axios";
 
-const AdminCard = ({ item }) => {
+const AdminCard = ({ item, onDelete }) => {
   const API = import.meta.env.VITE_API_URL;
   const imageUrl = item.img ? `${API}${item.img}` : "/placeholder.jpg";
 
   // Define a style for the badge based on the item type
   const typeBadgeClass = item.type === "lost" ? "lost-badge" : "found-badge";
+
+  const handleDeleteClick = () => {
+    if (
+      window.confirm(
+        `Are you sure you want to delete the item: ${item.itemName}?`
+      )
+    ) {
+      // Call the function passed from the parent, providing the item's ID
+      onDelete(item._id);
+    }
+  };
 
   return (
     <div className="item-card">
@@ -40,7 +51,9 @@ const AdminCard = ({ item }) => {
           <span className="item-category-value">{item.category}</span>
         </div>
 
-        <button className="admin-delete-btn">Delete item</button>
+        <button className="admin-delete-btn" onClick={handleDeleteClick}>
+          Delete item
+        </button>
       </div>
     </div>
   );
